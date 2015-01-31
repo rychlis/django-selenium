@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 import time
 import os
+import sys
 
 from django.db import transaction
 from django.core.urlresolvers import reverse
@@ -11,6 +12,10 @@ from django.utils.html import strip_tags
 
 from django_selenium import settings, selenium_server
 
+
+if sys.version_info >= (3, 0, 0):
+    unicode = str
+    basestring = str
 
 def wait(func):
     @wraps(func)
